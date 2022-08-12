@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ad Watcher!</title>
+</head>
+<body>
+<div id="overlays">
+    <div id="center-content">
+        <div id="leaderboard-container">
+            <table id="leaderboard"></table>
+        </div>
+        <div id="play-container">
+            <button id="play-button">PLAY!</button>
+        </div>
+    </div>
+</div>
+
+</body>
+<style>
+    body {
+        background: black;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        user-select: none;
+    }
+    #overlays {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    #center-content {
+        display: block;
+        position: absolute;
+        width: 985px;
+        height: 600px;
+        margin-top: -321px;
+        margin-bottom: -495px;
+        top: 45%;
+        left: 50%;
+        background-color: #343434;
+    }
+</style>
+</html>
