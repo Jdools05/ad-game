@@ -19,29 +19,27 @@
 </body>
 <style>
     body {
-        background: black;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-        user-select: none;
+
     }
     #overlays {
+        display: table;
         position: absolute;
-        left: 0;
-        right: 0;
         top: 0;
-        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: black;
     }
     #center-content {
-        display: block;
-        position: absolute;
-        width: 985px;
-        height: 600px;
-        margin-top: -321px;
-        margin-bottom: -495px;
-        top: 45%;
-        left: 50%;
-        background-color: #343434;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    #leaderboard {
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+        background: #440000;
     }
 </style>
 </html>

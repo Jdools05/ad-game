@@ -1,7 +1,9 @@
 package db.daos;
 
 import db.entities.UserEntity;
+import db.entities.VerificationLinkEntity;
 import io.quarkus.elytron.security.common.BcryptUtil;
+import io.vertx.ext.auth.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -22,6 +24,10 @@ public class UserEntityDao {
         entity.username = username;
         entity.password = BcryptUtil.bcryptHash(password);
         entity.role = role;
+        VerificationLinkEntity verificationLinkEntity = new VerificationLinkEntity();
+        verificationLinkEntity.key = BcryptUtil.bcryptHash(username);
+        verificationLinkEntity.userEntity = entity;
+        verificationLinkEntity.persist();
         entity.persist();
         return entity;
     }
@@ -35,8 +41,6 @@ public class UserEntityDao {
     }
 
     public List<UserEntity> findByUsername(String username) {
-//        return UserEntity.listAll().fil;
-        //TODO: Implement this function
-        return null;
+        return UserEntity.list("username", username);
     }
 }
