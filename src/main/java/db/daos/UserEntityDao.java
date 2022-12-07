@@ -6,6 +6,7 @@ import io.quarkus.elytron.security.common.BcryptUtil;
 import io.vertx.ext.auth.User;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -19,16 +20,20 @@ public class UserEntityDao {
      * @param role the comma-separated roles
      */
     @Transactional
-    public UserEntity create(String username, String password, String role) {
+    public UserEntity create(String username, String password, String email, String role) {
         UserEntity entity = new UserEntity();
         entity.username = username;
         entity.password = BcryptUtil.bcryptHash(password);
+        entity.email = email;
         entity.role = role;
         VerificationLinkEntity verificationLinkEntity = new VerificationLinkEntity();
         verificationLinkEntity.key = BcryptUtil.bcryptHash(username);
         verificationLinkEntity.userEntity = entity;
         verificationLinkEntity.persist();
         entity.persist();
+
+        // TODO: send email here
+
         return entity;
     }
 
@@ -40,7 +45,7 @@ public class UserEntityDao {
         return UserEntity.findById(id);
     }
 
-    public List<UserEntity> findByUsername(String username) {
-        return UserEntity.list("username", username);
+    public UserEntity findByUsername(String username) {
+        return UserEntity.find("username", username).firstResult();
     }
 }

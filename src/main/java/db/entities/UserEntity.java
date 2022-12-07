@@ -7,6 +7,7 @@ import io.quarkus.security.jpa.UserDefinition;
 import io.quarkus.security.jpa.Username;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "test_user")
@@ -16,6 +17,8 @@ public class UserEntity extends PanacheEntity {
     public String username;
     @Password
     public String password;
+    @Email
+    public String email;
     @Roles
     public String role;
 

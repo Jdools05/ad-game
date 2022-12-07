@@ -10,7 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Tag(name = "Verification Link", description = "Endpoints for the verification links")
-@Path("/api/verify")
+@Path("/verify")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class VerificationLinkResource {
